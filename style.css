@@ -6,7 +6,17 @@ body, html {
   color: white;
 }
 
-#image-container {
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #55f;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.working {
   display: none;
 }
 
