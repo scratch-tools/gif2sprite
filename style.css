@@ -3,4 +3,5 @@
 }
 #img-container img {
   visibility: hidden;
+  display: none;
 }
