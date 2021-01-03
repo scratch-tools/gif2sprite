@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!--gif-frames library-->
+    <script src="https://unpkg.com/gif-frames@1.0.1/dist/gif-frames.js"></script>
+    
+    <!--jszip library-->
+    <script src="./jszip.js"></script>
+    
+    <!--filesaver library-->
+    <script src="./filesaver.js"></script>
+
+    <!--SparkMD5 library-->
+    <script src="https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js"></script>
+
+
+  </head>
+  <body>
+    <input type="file" id="input" accept="image/gif"/><br/>
+    <p>Status: <span id="status"></span></p>
+    <img id="upload"/>
+    <canvas id="canvas"></canvas>
+    <div id="image-container"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
