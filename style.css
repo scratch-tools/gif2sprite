@@ -1,7 +1,9 @@
 body, html {
   padding: 0;
   margin: 0;
-  background-color: blue;
+  background-color: #00f;
+  text-align: center;
+  color: white;
 }
 
 #image-container {
