@@ -20,7 +20,10 @@
 
   </head>
   <body>
-    <input type="file" id="input" accept="image/gif"/><br/>
+    <div id="file-input">
+      <label for="input">Upload File</label>
+      <input type="file" id="input" accept="image/gif"/><br/>
+    </div>
     <p>Status: <span id="status"></span></p>
     <img id="upload"/>
     <canvas id="canvas"></canvas>
