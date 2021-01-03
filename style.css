@@ -1,3 +1,6 @@
 #img-container {
-  display: none;
+  visibility: hidden;
+}
+#img-container img {
+  visibility: hidden;
 }
