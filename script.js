@@ -3,8 +3,21 @@ const image = document.getElementById('upload');
 const canvas = document.getElementById('canvas');
 const status = document.getElementById('status');
 const imgs = document.getElementById('image-container');
+const progressContainer = document.getElementsByClassName('progress')[0];
+const progress = document.getElementById('progress-bar');
 
 status.textContent = "Waiting for file...";
+
+function hideProgressBar() {
+  progressContainer.style.opacity = 0;
+}
+function showProgressBar() {
+  progressContainer.style.opacity = 1;
+}
+function progressBarDisplay(percentStr) {
+  progress.style.width = percentStr;
+}
+
 
 function download(content, name) {
   let el = document.createElement("a");
@@ -22,6 +35,8 @@ function download(content, name) {
 
 
 function scan(fileName) {
+  showProgressBar();
+  progressBarDisplay("0%");
   status.textContent = "Scanning gif and creating sprite...";
   let size = 100;
   let aspectRatio = image.naturalWidth / image.naturalHeigth;
@@ -66,6 +81,7 @@ function scan(fileName) {
         let thisCostume = {assetId:md5,name:"frame-" + frame.frameIndex,"bitmapResolution":2,md5ext:md5+".png",dataFormat:"png",rotationCenterX:img.naturalWidth / 2,rotationCenterY:img.naturalHeight / 2};
         jsonData.costumes.push(thisCostume);
         zip.file(md5+".png", url.replace('data:image/png;base64,', ''), {base64: true});
+        progressBarDisplay(i / length * 100 + "%");
         if(i >= length) {
           console.log(i, length);
           zip.file("sprite.json", JSON.stringify(jsonData).replace("<FRAME_DURATION>", '' + (delay / 100)));
@@ -74,6 +90,7 @@ function scan(fileName) {
           
             status.textContent = "Downloading file... Upload another if you wish!";
             saveAs(content, fileName + ".sprite3");
+            hideProgressBar();
           });
         } else {
           next();
@@ -85,9 +102,10 @@ function scan(fileName) {
   });
 }
 
-
+hideProgressBar();
 
 fileInput.addEventListener('change', () => {
+  hideProgressBar();
   status.textContent = "Uploading file...";
   const file = fileInput.files[0];
   //console.log(file);
