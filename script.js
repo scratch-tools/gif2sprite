@@ -37,7 +37,9 @@ function download(content, name) {
 function scan(fileName) {
   showProgressBar();
   progressBarDisplay("0%");
-  status.textContent = "Scanning gif and creating sprite...";
+  const createPercentFromDec = dec => Math.round(dec * 1000) / 10;
+  const formatPercent = percent => " ".repeat('100.0%'.length - (percent + '%').length) + percent + "%";
+  status.textContent = "Scanning gif and creating sprite... " + formatPercent(createPercentFromDec(0));
   let size = 100;
   let aspectRatio = image.naturalWidth / image.naturalHeigth;
   if (aspectRatio > 240 / 180) {
@@ -82,6 +84,7 @@ function scan(fileName) {
         jsonData.costumes.push(thisCostume);
         zip.file(md5+".png", url.replace('data:image/png;base64,', ''), {base64: true});
         progressBarDisplay(i / length * 100 + "%");
+        status.textContent = "Scanning gif and creating sprite... " + formatPercent(createPercentFromDec(i / length));
         if(i >= length) {
           console.log(i, length);
           zip.file("sprite.json", JSON.stringify(jsonData).replace("<FRAME_DURATION>", '' + (delay / 100)));
