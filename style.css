@@ -32,6 +32,22 @@ body, html {
   display: none;
 }
 
+.progress {
+  position: relative;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #aaf;
+  width: 100%;
+}
+
+#progress-bar {
+  position: relative;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #00f;
+  width: 25%;
+}
+
 #input {
   opacity: 0;
   width: 0.1px;
