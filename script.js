@@ -38,7 +38,7 @@ function scan(fileName) {
   showProgressBar();
   progressBarDisplay("0%");
   const createPercentFromDec = dec => Math.round(dec * 1000) / 10;
-  const formatPercent = percent => " ".repeat('100.0%'.length - (percent + '%').length) + percent + "%";
+  const formatPercent = percent => " ".repeat(' 100.0%'.length - (percent + '%').length) + percent + "%";
   status.textContent = "Scanning gif and creating sprite... " + formatPercent(createPercentFromDec(0));
   let size = 100;
   let aspectRatio = image.naturalWidth / image.naturalHeigth;
