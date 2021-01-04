@@ -26,6 +26,7 @@ body, html {
   background-color: #55f;
   padding: 50px;
   border-radius: 15px;
+  min-width: 50%;
 }
 
 .working {
